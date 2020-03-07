@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"strings"
+
 	"github.com/google/uuid"
 )
 
@@ -20,4 +22,12 @@ func NewUUID() (string, error) {
 		return "", err
 	}
 	return v.String(), nil
+}
+func UUID() string {
+	v, err := NewUUID()
+	if err != nil {
+		panic(err)
+	}
+
+	return strings.Replace(v, "-", "", -1)
 }
